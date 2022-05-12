@@ -12,7 +12,9 @@ class PicturesController < ApplicationController
     redirect_to new_picture_path
   end
 
-
+  def show
+    @picture = Picture.find(params[:id])
+  end
 
 
 
