@@ -3,16 +3,22 @@
 <table>
   <tr>
     <th>画像</th>
-    <th>内容</th>
+    <th>内容</th
+    <th>ユーザー</th>
   </tr>
 
 <% @pictures.each do |picture| %>
   <tr>
     <td><%= picture.image %></td>
     <td><%= picture.content %></td>
+    <td><%= picture.user.name %></td>
 
     <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
     <td><%= link_to "編集する", edit_picture_path(picture.id) %></td>
+    <td><%= link_to '削除する', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }  %></td>
+  </tr>
+<% end %>
+</table>
 
   </tr>
 <% end %>
