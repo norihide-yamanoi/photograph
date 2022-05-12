@@ -3,13 +3,13 @@
 <table>
   <tr>
     <th>画像</th>
-    <th>内容</th
+    <th>内容</th>
     <th>ユーザー</th>
   </tr>
 
 <% @pictures.each do |picture| %>
   <tr>
-    <td><%= picture.image.url %></td>
+    <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
     <td><%= picture.content %></td>
     <td><%= picture.user.name %></td>
 
