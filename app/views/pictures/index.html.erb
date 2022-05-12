@@ -9,7 +9,7 @@
 
 <% @pictures.each do |picture| %>
   <tr>
-    <td><%= picture.image %></td>
+    <td><%= picture.image.url %></td>
     <td><%= picture.content %></td>
     <td><%= picture.user.name %></td>
 
