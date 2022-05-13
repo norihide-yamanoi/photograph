@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_confirm, only: [:edit, :update, :destroy]
   def index
     @pictures = Picture.all
   end
@@ -58,4 +58,10 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def  user_confirm
+    @picture = Picture.find(params[:id])
+      if @picture.user_id != current_user.id
+      redirect_to pictures_path, notice:"この機能は使用できません！"
+      end
+  end
 end

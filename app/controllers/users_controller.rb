@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :user_confirm, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -37,5 +38,11 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile, :profile_cache )
   end
 
+  def user_confirm
+    @user = User.find(params[:id])
+      if @user.id != current_user.id
+      redirect_to new_user_path, notice:"この機能は使用できません！"
+      end
+  end
 
 end
