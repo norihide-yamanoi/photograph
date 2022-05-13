@@ -15,7 +15,8 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
-        redirect_to pictures_path, notice: "作成しました！"
+        ConfirmMailer.confirm_mail(@picture.user).deliver
+          redirect_to pictures_path, notice: "作成しました！"
       else
         render :new
       end
