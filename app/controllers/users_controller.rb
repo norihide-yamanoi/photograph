@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def user_confirm
     @user = User.find(params[:id])
       if @user.id != current_user.id
-      redirect_to new_user_path, notice:"この機能は使用できません！"
+      redirect_to pictures_path, notice:"この機能は使用できません！"
       end
   end
 
